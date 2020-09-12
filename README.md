@@ -24,5 +24,7 @@
 
 **Glide** -  is a fast and efficient open source media management and image loading framework for Android that wraps media decoding, memory and disk caching, and resource pooling into a simple and easy to use interface. [Ссылка на GitHub](https://github.com/bumptech/glide)
 
+**Retrofit** - a type-safe HTTP client for Android and Java. [Ссылка на GitHub](https://github.com/square/retrofit)
+
 ### Справка по markdown
 Всю информацию по markdown можно найти [здесь](https://guides.github.com/features/mastering-markdown/)
