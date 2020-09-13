@@ -1,18 +1,21 @@
 package ru.ivan.englishdictionary.models
 
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+
 data class Meaning(
-    val id: Int,
-    val imageUrl: String,
-    val partOfSpeechCode: String,
-    val previewUrl: String,
-    val soundUrl: String,
-    val transcription: String,
-    val translation: Translation
+    @Expose @SerializedName("id") val id: Int,
+    @Expose @SerializedName("imageUrl") val imageUrl: String,
+    @Expose @SerializedName("partOfSpeechCode") val partOfSpeechCode: String,
+    @Expose @SerializedName("previewUrl") val previewUrl: String?,
+    @Expose @SerializedName("soundUrl") val soundUrl: String?,
+    @Expose @SerializedName("transcription") val transcription: String?,
+    @Expose @SerializedName("translation") val translation: Translation?
 )
 
 data class Translation(
-    val note: String,
-    val text: String
+    @Expose @SerializedName("note") val note: String?,
+    @Expose @SerializedName("text") val text: String?
 )
 
 data class AlternativeTranslation(

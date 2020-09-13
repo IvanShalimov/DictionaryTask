@@ -1,12 +1,14 @@
 package ru.ivan.englishdictionary.models
 
+import com.google.gson.annotations.SerializedName
+
 
 class SearchRequestResult : ArrayList<SearchRequestResultItem>()
 
 data class SearchRequestResultItem(
-    val id: Int,
-    val meanings: List<Meaning>,
-    val text: String
+    @SerializedName("id") val id: Int,
+    @SerializedName("meanings")val meanings: List<Meaning>,
+    @SerializedName("text") val text: String
 )
 
 class FullInformationRequestResult : ArrayList<FullInformationRequestResultItem>()

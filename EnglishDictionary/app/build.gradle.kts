@@ -45,7 +45,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
-    testImplementation("junit:junit:4.12")
+    testImplementation("junit:junit:4.13")
 
     //GSON
     implementation("com.google.code.gson:gson:2.8.6")
@@ -54,18 +54,21 @@ dependencies {
     kapt("com.google.dagger:dagger-compiler:$daggerVersion")
     //Moxy
     //implementation "com.github.moxy-community:moxy-androidx:$moxyVersion"
-    implementation ("com.github.moxy-community:moxy-androidx:$moxyVersion")
-    implementation ("com.github.moxy-community:moxy-ktx:$moxyVersion")
-    kapt ("com.github.moxy-community:moxy-compiler:$moxyVersion")
+    implementation("com.github.moxy-community:moxy-androidx:$moxyVersion")
+    implementation("com.github.moxy-community:moxy-ktx:$moxyVersion")
+    kapt("com.github.moxy-community:moxy-compiler:$moxyVersion")
     //Glide
     implementation("com.github.bumptech.glide:glide:$glideVersion")
     kapt("com.github.bumptech.glide:compiler:$glideVersion")
     //Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.8.0")
+    implementation("com.squareup.retrofit2:retrofit:2.8.1")
+    implementation ("com.squareup.retrofit2:converter-gson:2.8.1")
+    implementation ("com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0")
+    //implementation ("com.squareup.okhttp3:logging-interceptor:3.8.0")
     //rx-java
-    implementation ("io.reactivex.rxjava3:rxjava:3.0.6")
+    implementation("io.reactivex.rxjava3:rxjava:3.0.6")
     //rx-binding
-    implementation ("com.jakewharton.rxbinding4:rxbinding:$rxBinding")
-    implementation ("com.jakewharton.rxbinding4:rxbinding-core:$rxBinding")
-    implementation ("com.jakewharton.rxbinding4:rxbinding-appcompat:$rxBinding")
+    implementation("com.jakewharton.rxbinding4:rxbinding:$rxBinding")
+    implementation("com.jakewharton.rxbinding4:rxbinding-core:$rxBinding")
+    implementation("com.jakewharton.rxbinding4:rxbinding-appcompat:$rxBinding")
 }

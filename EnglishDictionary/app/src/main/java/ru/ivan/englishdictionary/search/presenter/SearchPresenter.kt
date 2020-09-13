@@ -7,7 +7,6 @@ import moxy.MvpPresenter
 import ru.ivan.englishdictionary.EnglishDictionaryApplication
 import ru.ivan.englishdictionary.di.modules.qualifier.UI
 import ru.ivan.englishdictionary.search.domain.SearchInteractor
-import ru.ivan.englishdictionary.search.view.SearchListAdapter
 import ru.ivan.englishdictionary.search.view.SearchView
 import javax.inject.Inject
 
@@ -34,7 +33,7 @@ class SearchPresenter(@UI var ui: Scheduler) : MvpPresenter<SearchView>() {
         viewState.showWaitState()
         viewState.hideError()
 
-        searchDisposable = interactor.request(searchWord)
+        searchDisposable = interactor.search(searchWord)
             .observeOn(ui)
             .subscribe ({ result ->
                 viewState.showResult(result)

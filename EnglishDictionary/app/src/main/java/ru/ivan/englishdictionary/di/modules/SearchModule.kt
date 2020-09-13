@@ -7,7 +7,10 @@ import ru.ivan.englishdictionary.di.modules.qualifier.IO
 import ru.ivan.englishdictionary.di.modules.qualifier.UI
 import ru.ivan.englishdictionary.search.domain.SearchInteractor
 import ru.ivan.englishdictionary.search.domain.SearchInteractorImpl
+import ru.ivan.englishdictionary.search.domain.repository.SearchRepository
+import ru.ivan.englishdictionary.search.domain.repository.SearchRepositoryImpl
 import ru.ivan.englishdictionary.search.presenter.SearchPresenter
+import ru.ivan.englishdictionary.search.presenter.SearchScreenMapper
 import javax.inject.Singleton
 
 @Module
@@ -20,6 +23,17 @@ class SearchModule {
 
     @Provides
     @Singleton
-    fun provideNoteDao(@IO ioScheduler:Scheduler) : SearchInteractor = SearchInteractorImpl(ioScheduler)
+    fun provideSearchInteractor(@IO ioScheduler:Scheduler,
+                                searchRepository: SearchRepository,
+                                searchScreenMapper:  SearchScreenMapper
+    ) : SearchInteractor = SearchInteractorImpl(ioScheduler, searchRepository, searchScreenMapper)
+
+    @Provides
+    @Singleton
+    fun provideMapper() = SearchScreenMapper()
+
+    @Provides
+    @Singleton
+    fun provideRepository(): SearchRepository = SearchRepositoryImpl()
 
 }

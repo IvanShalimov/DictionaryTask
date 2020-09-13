@@ -1,9 +1,11 @@
 package ru.ivan.englishdictionary.search.presenter.models
 
+import ru.ivan.englishdictionary.search.presenter.PartOfSpeech
+
 
 data class SearchItem(
     val id: Int,
-    val partOfSpeechCode: String,
+    val partOfSpeechCode: PartOfSpeech,
     val previewUrl: String,
     val transcription: String,
     val note: String,
