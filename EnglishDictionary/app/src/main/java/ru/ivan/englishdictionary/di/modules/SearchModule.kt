@@ -3,6 +3,8 @@ package ru.ivan.englishdictionary.di.modules
 import dagger.Module
 import dagger.Provides
 import io.reactivex.rxjava3.core.Scheduler
+import ru.ivan.englishdictionary.di.modules.qualifier.IO
+import ru.ivan.englishdictionary.di.modules.qualifier.UI
 import ru.ivan.englishdictionary.search.domain.SearchInteractor
 import ru.ivan.englishdictionary.search.domain.SearchInteractorImpl
 import ru.ivan.englishdictionary.search.presenter.SearchPresenter

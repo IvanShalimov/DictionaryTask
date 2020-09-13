@@ -1,4 +1,4 @@
-package ru.ivan.englishdictionary.di.modules;
+package ru.ivan.englishdictionary.di.modules.qualifier;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

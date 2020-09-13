@@ -3,7 +3,7 @@ package ru.ivan.englishdictionary.search.domain
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
-import ru.ivan.englishdictionary.di.modules.IO
+import ru.ivan.englishdictionary.di.modules.qualifier.IO
 
 class SearchInteractorImpl(@IO val io:Scheduler) : SearchInteractor {
 

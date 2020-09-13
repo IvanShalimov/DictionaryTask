@@ -1,13 +1,13 @@
 package ru.ivan.englishdictionary.search.presenter
 
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.Disposable
 import moxy.InjectViewState
 import moxy.MvpPresenter
 import ru.ivan.englishdictionary.EnglishDictionaryApplication
-import ru.ivan.englishdictionary.di.modules.UI
+import ru.ivan.englishdictionary.di.modules.qualifier.UI
 import ru.ivan.englishdictionary.search.domain.SearchInteractor
+import ru.ivan.englishdictionary.search.view.SearchListAdapter
 import ru.ivan.englishdictionary.search.view.SearchView
 import javax.inject.Inject
 
@@ -32,15 +32,17 @@ class SearchPresenter(@UI var ui: Scheduler) : MvpPresenter<SearchView>() {
 
         viewState.hideFirstTime()
         viewState.showWaitState()
+        viewState.hideError()
 
         searchDisposable = interactor.request(searchWord)
             .observeOn(ui)
             .subscribe ({ result ->
-                viewState.showResult()
+                viewState.showResult(result)
                 viewState.hideWaitState()
             }, {
                 it.printStackTrace()
                 viewState.hideWaitState()
+                viewState.hideResult()
                 viewState.showError()
             })
     }

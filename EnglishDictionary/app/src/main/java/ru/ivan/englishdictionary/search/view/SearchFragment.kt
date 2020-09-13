@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Scheduler
@@ -13,9 +14,10 @@ import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import ru.ivan.englishdictionary.EnglishDictionaryApplication
 import ru.ivan.englishdictionary.R
-import ru.ivan.englishdictionary.di.modules.IO
-import ru.ivan.englishdictionary.di.modules.UI
+import ru.ivan.englishdictionary.di.modules.qualifier.IO
+import ru.ivan.englishdictionary.di.modules.qualifier.UI
 import ru.ivan.englishdictionary.search.presenter.SearchPresenter
+import ru.ivan.englishdictionary.search.presenter.models.SearchItem
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -26,10 +28,12 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
     }
 
     @Inject
-    @UI lateinit var uiScheduler: Scheduler
+    @UI
+    lateinit var uiScheduler: Scheduler
     @Inject
     @IO
     lateinit var ioScheduler: Scheduler
+    val adapter:SearchListAdapter by lazy { SearchListAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,16 +47,28 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
-    override fun showResult() {
+    override fun showResult(result: List<SearchItem>) {
+        adapter.items = result
+        searchResultList.isVisible = true
+    }
 
+    override fun hideResult() {
+        searchResultList.isVisible = false
     }
 
     override fun showError() {
+        searchErrorLabel.isVisible = true
+    }
 
+    override fun hideError() {
+        searchErrorLabel.isVisible = false
     }
 
     override fun showFirstTime() {
         firstShowLabel.isVisible = true
+        searchResultList.layoutManager = LinearLayoutManager(context)
+        searchResultList.adapter = adapter
+
         search.textChanges()
             .skipInitialValue()
             .filter { it.length >= 2 }
