@@ -9,7 +9,7 @@ import ru.ivan.englishdictionary.search.presenter.models.SearchItem
 interface SearchView: MvpView {
     fun showResult(result: List<SearchItem>)
     fun hideResult()
-    fun showError()
+    fun showError(text:String = "Не удалось найти ничего по заданному слову")
     fun hideError()
     fun showFirstTime()
     fun hideFirstTime()

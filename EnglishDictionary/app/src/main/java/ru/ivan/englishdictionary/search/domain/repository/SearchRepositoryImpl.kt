@@ -6,12 +6,18 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.ivan.englishdictionary.models.Meaning
 import ru.ivan.englishdictionary.network.API
+import ru.ivan.englishdictionary.network.NetworkConnectionException
+import ru.ivan.englishdictionary.network.NetworkUtil
 
-class SearchRepositoryImpl : SearchRepository {
+class SearchRepositoryImpl(private val networkUtil: NetworkUtil) : SearchRepository {
 
     private val api: API by lazy {initAPI() }
 
     override fun request(word: String): Single<List<Meaning>> {
+        if(!networkUtil.isNetwrokConnected()) {
+           return Single.error(NetworkConnectionException())
+        }
+
         return api.search(word)
             .map { it.first().meanings }//Все обёрнуто в массив, поэтому беру первый элемент
     }

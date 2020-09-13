@@ -30,10 +30,15 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
     @Inject
     @UI
     lateinit var uiScheduler: Scheduler
+
     @Inject
     @IO
     lateinit var ioScheduler: Scheduler
-    val adapter:SearchListAdapter by lazy { SearchListAdapter() }
+    private val adapter: SearchListAdapter by lazy {
+        SearchListAdapter({
+            //TODO handle click and move to detail
+        })
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +61,7 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
         searchResultList.isVisible = false
     }
 
-    override fun showError() {
+    override fun showError(text:String) {
         searchErrorLabel.isVisible = true
     }
 
@@ -73,7 +78,7 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
             .skipInitialValue()
             .filter { it.length >= 2 }
             .debounce(100, TimeUnit.MILLISECONDS)
-            .subscribeOn( ioScheduler)
+            .subscribeOn(ioScheduler)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { searchPresenter.search(it.toString()) }
     }

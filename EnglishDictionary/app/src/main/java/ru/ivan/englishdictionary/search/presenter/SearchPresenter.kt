@@ -6,6 +6,7 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 import ru.ivan.englishdictionary.EnglishDictionaryApplication
 import ru.ivan.englishdictionary.di.modules.qualifier.UI
+import ru.ivan.englishdictionary.network.NetworkConnectionException
 import ru.ivan.englishdictionary.search.domain.SearchInteractor
 import ru.ivan.englishdictionary.search.view.SearchView
 import javax.inject.Inject
@@ -36,13 +37,23 @@ class SearchPresenter(@UI var ui: Scheduler) : MvpPresenter<SearchView>() {
         searchDisposable = interactor.search(searchWord)
             .observeOn(ui)
             .subscribe ({ result ->
-                viewState.showResult(result)
+                if(result.isEmpty()){
+                    viewState.showError()
+                } else {
+                    viewState.showResult(result)
+                }
+
                 viewState.hideWaitState()
             }, {
+                if(it is NetworkConnectionException){
+                    viewState.showError(it.msg)
+                } else {
+                    viewState.showError()
+                }
                 it.printStackTrace()
                 viewState.hideWaitState()
                 viewState.hideResult()
-                viewState.showError()
+
             })
     }
 

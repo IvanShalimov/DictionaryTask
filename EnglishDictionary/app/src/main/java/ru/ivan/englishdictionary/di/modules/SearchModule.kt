@@ -5,6 +5,7 @@ import dagger.Provides
 import io.reactivex.rxjava3.core.Scheduler
 import ru.ivan.englishdictionary.di.modules.qualifier.IO
 import ru.ivan.englishdictionary.di.modules.qualifier.UI
+import ru.ivan.englishdictionary.network.NetworkUtil
 import ru.ivan.englishdictionary.search.domain.SearchInteractor
 import ru.ivan.englishdictionary.search.domain.SearchInteractorImpl
 import ru.ivan.englishdictionary.search.domain.repository.SearchRepository
@@ -34,6 +35,6 @@ class SearchModule {
 
     @Provides
     @Singleton
-    fun provideRepository(): SearchRepository = SearchRepositoryImpl()
+    fun provideRepository(networkUtil: NetworkUtil): SearchRepository = SearchRepositoryImpl(networkUtil)
 
 }
