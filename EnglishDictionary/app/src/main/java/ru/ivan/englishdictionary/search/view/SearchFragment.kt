@@ -14,6 +14,8 @@ import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import ru.ivan.englishdictionary.EnglishDictionaryApplication
 import ru.ivan.englishdictionary.R
+import ru.ivan.englishdictionary.detail.view.DetailFragment
+import ru.ivan.englishdictionary.detail.view.NavigateListener
 import ru.ivan.englishdictionary.di.modules.qualifier.IO
 import ru.ivan.englishdictionary.di.modules.qualifier.UI
 import ru.ivan.englishdictionary.search.presenter.SearchPresenter
@@ -34,11 +36,7 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
     @Inject
     @IO
     lateinit var ioScheduler: Scheduler
-    private val adapter: SearchListAdapter by lazy {
-        SearchListAdapter({
-            //TODO handle click and move to detail
-        })
-    }
+    private val adapter: SearchListAdapter by lazy { SearchListAdapter { (activity as NavigateListener).navigateTo(DetailFragment(it)) } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
