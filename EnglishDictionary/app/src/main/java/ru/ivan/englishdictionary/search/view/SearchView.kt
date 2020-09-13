@@ -1,6 +1,15 @@
 package ru.ivan.englishdictionary.search.view
 
-import com.arellomobile.mvp.MvpView
+import moxy.MvpView
+import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
-interface SearchView:MvpView {
+@StateStrategyType(value = AddToEndSingleStrategy::class)
+interface SearchView: MvpView {
+    fun showResult()
+    fun showError()
+    fun showFirstTime()
+    fun hideFirstTime()
+    fun showWaitState()
+    fun hideWaitState()
 }

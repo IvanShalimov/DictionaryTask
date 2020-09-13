@@ -1,9 +1,9 @@
 package ru.ivan.englishdictionary
 
 import android.os.Bundle
-import com.arellomobile.mvp.MvpAppCompatActivity
+import moxy.MvpAppCompatActivity
 
-class MainActivity : MvpAppCompatActivity() {
+class HomeActivity : MvpAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
