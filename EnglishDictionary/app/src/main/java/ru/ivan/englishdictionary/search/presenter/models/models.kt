@@ -1,6 +1,6 @@
 package ru.ivan.englishdictionary.search.presenter.models
 
-import ru.ivan.englishdictionary.search.presenter.PartOfSpeech
+import ru.ivan.englishdictionary.models.PartOfSpeech
 
 
 data class SearchItem(
