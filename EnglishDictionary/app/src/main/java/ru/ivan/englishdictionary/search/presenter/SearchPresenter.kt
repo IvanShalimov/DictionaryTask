@@ -9,6 +9,7 @@ import ru.ivan.englishdictionary.di.modules.qualifier.UI
 import ru.ivan.englishdictionary.network.NetworkConnectionException
 import ru.ivan.englishdictionary.search.domain.SearchInteractor
 import ru.ivan.englishdictionary.search.view.SearchView
+import ru.ivan.englishdictionary.utils.TextUtil
 import javax.inject.Inject
 
 @InjectViewState
@@ -17,6 +18,7 @@ class SearchPresenter(@UI var ui: Scheduler) : MvpPresenter<SearchView>() {
     @Inject
     lateinit var interactor: SearchInteractor
     private var searchDisposable: Disposable = Disposable.empty()
+    private val textUtil = TextUtil()
 
     init {
         EnglishDictionaryApplication.graph.inject(this)
@@ -28,6 +30,9 @@ class SearchPresenter(@UI var ui: Scheduler) : MvpPresenter<SearchView>() {
     }
 
     fun search(searchWord: String) {
+        if(!textUtil.isValidSearchKey(searchWord)) {
+            return
+        }
         searchDisposable.dispose()
 
         viewState.hideFirstTime()
