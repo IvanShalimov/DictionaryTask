@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jakewharton.rxbinding4.widget.textChanges
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Scheduler
 import kotlinx.android.synthetic.main.fragment_search.*
 import moxy.MvpAppCompatFragment
@@ -25,10 +24,6 @@ import javax.inject.Inject
 
 class SearchFragment : MvpAppCompatFragment(), SearchView {
 
-    private val searchPresenter: SearchPresenter by moxyPresenter {
-        EnglishDictionaryApplication.graph.getSearchPresenter()
-    }
-
     @Inject
     @UI
     lateinit var uiScheduler: Scheduler
@@ -36,7 +31,17 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
     @Inject
     @IO
     lateinit var ioScheduler: Scheduler
-    private val adapter: SearchListAdapter by lazy { SearchListAdapter { (activity as NavigateListener).navigateTo(DetailFragment(it)) } }
+
+    private val adapter: SearchListAdapter by lazy {
+        SearchListAdapter {
+            (activity as NavigateListener).navigateTo(
+                DetailFragment(it)
+            )
+        }
+    }
+    private val searchPresenter: SearchPresenter by moxyPresenter {
+        EnglishDictionaryApplication.graph.getSearchPresenter()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +51,7 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_search, container, false)
-    }
+    ): View? = inflater.inflate(R.layout.fragment_search, container, false)
 
     override fun showResult(result: List<SearchItem>) {
         adapter.items = result
@@ -59,7 +62,7 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
         searchResultList.isVisible = false
     }
 
-    override fun showError(text:String) {
+    override fun showError(text: String) {
         searchErrorLabel.isVisible = true
     }
 
@@ -77,7 +80,7 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
             .filter { it.length >= 2 }
             .debounce(100, TimeUnit.MILLISECONDS)
             .subscribeOn(ioScheduler)
-            .observeOn(AndroidSchedulers.mainThread())
+            .observeOn(uiScheduler)
             .subscribe { searchPresenter.search(it.toString()) }
     }
 

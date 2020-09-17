@@ -6,10 +6,10 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 import ru.ivan.englishdictionary.EnglishDictionaryApplication
 import ru.ivan.englishdictionary.di.modules.qualifier.UI
-import ru.ivan.englishdictionary.network.NetworkConnectionException
 import ru.ivan.englishdictionary.search.domain.SearchInteractor
 import ru.ivan.englishdictionary.search.view.SearchView
-import ru.ivan.englishdictionary.utils.TextUtil
+import ru.ivan.englishdictionary.utils.network.NetworkConnectionException
+import ru.ivan.englishdictionary.utils.text.TextUtil
 import javax.inject.Inject
 
 @InjectViewState

@@ -3,7 +3,7 @@ package ru.ivan.englishdictionary.di.modules
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import ru.ivan.englishdictionary.network.NetworkUtil
+import ru.ivan.englishdictionary.utils.network.NetworkUtil
 import javax.inject.Singleton
 
 @Module

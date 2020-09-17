@@ -11,7 +11,7 @@ import ru.ivan.englishdictionary.detail.presenter.DetailMapper
 import ru.ivan.englishdictionary.detail.presenter.DetailPresenter
 import ru.ivan.englishdictionary.di.modules.qualifier.IO
 import ru.ivan.englishdictionary.di.modules.qualifier.UI
-import ru.ivan.englishdictionary.network.NetworkUtil
+import ru.ivan.englishdictionary.utils.network.NetworkUtil
 
 @Module
 class DetailModule {

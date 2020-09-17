@@ -1,7 +1,7 @@
 package ru.ivan.englishdictionary
 
 import org.junit.Test
-import ru.ivan.englishdictionary.utils.TextUtil
+import ru.ivan.englishdictionary.utils.text.TextUtil
 
 
 class TextUtilTest {

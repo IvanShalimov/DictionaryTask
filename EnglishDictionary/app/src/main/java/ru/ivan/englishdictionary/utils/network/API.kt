@@ -1,4 +1,4 @@
-package ru.ivan.englishdictionary.network
+package ru.ivan.englishdictionary.utils.network
 
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
@@ -10,9 +10,9 @@ import ru.ivan.englishdictionary.models.SearchRequestResultItem
 interface API {
     @Headers("Accept:application/json")
     @GET("meanings")
-    fun meanings(@Query("ids") ids:Int):Single<List<FullInformationRequestResultItem>>
+    fun meanings(@Query("ids") ids: Int): Single<List<FullInformationRequestResultItem>>
 
     @Headers("Accept:application/json")
     @GET("words/search")
-    fun search(@Query("search") word:String): Single<List<SearchRequestResultItem>>
+    fun search(@Query("search") word: String): Single<List<SearchRequestResultItem>>
 }

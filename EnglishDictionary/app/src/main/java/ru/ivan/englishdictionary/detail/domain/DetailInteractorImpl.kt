@@ -15,7 +15,7 @@ class DetailInteractorImpl(
 
     override fun getDetailData(wordId: Int): Single<DetailInfo> {
         return detailRepository.request(wordId)
-            .map {detailMapper.map(it) }
+            .map { detailMapper.map(it) }
             .subscribeOn(ioScheduler)
     }
 }

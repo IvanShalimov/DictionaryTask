@@ -17,18 +17,20 @@ import ru.ivan.englishdictionary.EnglishDictionaryApplication
 import ru.ivan.englishdictionary.R
 import ru.ivan.englishdictionary.detail.presenter.DetailPresenter
 
-class DetailFragment(private val wordId:Int): MvpAppCompatFragment(), DetailView {
+class DetailFragment(private val wordId: Int) : MvpAppCompatFragment(), DetailView {
 
     private val detailPresenter: DetailPresenter by moxyPresenter {
         EnglishDictionaryApplication.graph.getDetailComponent().getDetailPresenter()
     }
-    /*    private val adapter: SearchListAdapter by lazy { SearchListAdapter { (activity as NavigateListener).navigateTo(DetailFragment(it)) } }*/
-    private val adapter:ImageAdapter by lazy { ImageAdapter() }
 
-            override fun onCreateView(
+    private val adapter: ImageAdapter by lazy { ImageAdapter() }
+
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? { return inflater.inflate(R.layout.fragment_detail, container, false) }
+    ): View? {
+        return inflater.inflate(R.layout.fragment_detail, container, false)
+    }
 
     override fun onFirstShow() {
         detailPresenter.loadData(wordId)
@@ -49,19 +51,30 @@ class DetailFragment(private val wordId:Int): MvpAppCompatFragment(), DetailView
         transciption: String
     ) {
         val SIGNS = " [] ("
-        val starItalic = text.length+transciption.length+SIGNS.length
-        val endItalic = starItalic+partOfSpeech.length
+        val starItalic = text.length + transciption.length + SIGNS.length
+        val endItalic = starItalic + partOfSpeech.length
 
         val spannable = SpannableString("$text [$transciption] ($partOfSpeech)")
-        spannable.setSpan(StyleSpan(Typeface.BOLD),0,text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannable.setSpan(StyleSpan(Typeface.ITALIC),starItalic, endItalic, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(
+            StyleSpan(Typeface.BOLD),
+            0,
+            text.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannable.setSpan(
+            StyleSpan(Typeface.ITALIC),
+            starItalic,
+            endItalic,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
         title.isVisible = true
         title.text = spannable
     }
 
     override fun showImage(imageUrls: List<String>) {
         listImage.isVisible = true
-        listImage.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        listImage.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         listImage.adapter = adapter
         adapter.items = imageUrls
     }

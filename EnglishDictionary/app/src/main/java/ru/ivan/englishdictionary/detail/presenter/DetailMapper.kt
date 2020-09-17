@@ -12,9 +12,9 @@ class DetailMapper {
             prefix = fullInformationRequestResultItem.prefix ?: "",
             mnemonics = fullInformationRequestResultItem.mnemonics ?: "",
             images = fullInformationRequestResultItem.images?.map { it.url ?: "" }
-                ?: listOf<String>(),
+                ?: listOf(),
             examples = fullInformationRequestResultItem.examples?.map { it.text ?: "" }
-                ?: listOf<String>(),
+                ?: listOf(),
             difficultyLevel = fullInformationRequestResultItem.difficultyLevel ?: -1,
             definition = fullInformationRequestResultItem.definition?.text ?: "",
             noteTranslation = fullInformationRequestResultItem.translation?.note ?: "",

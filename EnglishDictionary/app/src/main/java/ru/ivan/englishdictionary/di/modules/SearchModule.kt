@@ -5,13 +5,13 @@ import dagger.Provides
 import io.reactivex.rxjava3.core.Scheduler
 import ru.ivan.englishdictionary.di.modules.qualifier.IO
 import ru.ivan.englishdictionary.di.modules.qualifier.UI
-import ru.ivan.englishdictionary.network.NetworkUtil
 import ru.ivan.englishdictionary.search.domain.SearchInteractor
 import ru.ivan.englishdictionary.search.domain.SearchInteractorImpl
 import ru.ivan.englishdictionary.search.domain.repository.SearchRepository
 import ru.ivan.englishdictionary.search.domain.repository.SearchRepositoryImpl
 import ru.ivan.englishdictionary.search.presenter.SearchPresenter
 import ru.ivan.englishdictionary.search.presenter.SearchScreenMapper
+import ru.ivan.englishdictionary.utils.network.NetworkUtil
 import javax.inject.Singleton
 
 @Module

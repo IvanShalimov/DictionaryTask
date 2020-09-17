@@ -24,14 +24,14 @@ class ImageAdapter:RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        holder.handle(items[position])
+        holder.handle(position)
     }
 
-    inner class ImageViewHolder(val layout: View) : RecyclerView.ViewHolder(layout) {
-        fun handle(url: String) {
+    inner class ImageViewHolder(private val layout: View) : RecyclerView.ViewHolder(layout) {
+        fun handle(position: Int) {
             Glide
                 .with(layout.context)
-                .load("http:${url}")
+                .load("http:${items[position]}")
                 .centerCrop()
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(layout.image)

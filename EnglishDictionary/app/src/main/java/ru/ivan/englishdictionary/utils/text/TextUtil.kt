@@ -1,4 +1,4 @@
-package ru.ivan.englishdictionary.utils
+package ru.ivan.englishdictionary.utils.text
 
 class TextUtil {
     fun isValidSearchKey(searchWord:String): Boolean{

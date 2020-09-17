@@ -1,4 +1,4 @@
-package ru.ivan.englishdictionary.network
+package ru.ivan.englishdictionary.utils.network
 
 import android.content.Context
 import android.net.ConnectivityManager

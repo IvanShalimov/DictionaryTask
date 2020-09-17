@@ -5,9 +5,9 @@ import io.reactivex.rxjava3.core.Single
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.ivan.englishdictionary.models.FullInformationRequestResultItem
-import ru.ivan.englishdictionary.network.API
-import ru.ivan.englishdictionary.network.NetworkConnectionException
-import ru.ivan.englishdictionary.network.NetworkUtil
+import ru.ivan.englishdictionary.utils.network.API
+import ru.ivan.englishdictionary.utils.network.NetworkConnectionException
+import ru.ivan.englishdictionary.utils.network.NetworkUtil
 
 class DetailRepositoryImpl(private val networkUtil: NetworkUtil) : DetailRepository {
 
