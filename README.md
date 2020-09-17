@@ -17,7 +17,7 @@
 # Используемые библиотек
 
 **Dagger2** - is a compile-time framework for dependency injection. It uses no reflection or runtime bytecode generation, does all its analysis at compile-time, and generates plain Java source code.[Сслыка на GitHub](https://github.com/google/dagger). Что такое [dependency injection](https://ru.wikipedia.org/wiki/Внедрение_зависимости)?
-Причина применения: Популярное решение для внедрения зависимостей, хорошо знакомое мне из-за чего разработка не замедлялась (небыло необходимости в изучение новых незнакомых интерфейсов). Помогает написать слабую связь между компонентами архитектуры(см. [MVP](https://ru.wikipedia.org/wiki/Model-View-Presenter))
+Причина применения: Популярное решение для внедрения зависимостей, хорошо знакомое мне, из-за чего разработка не замедлялась (не было необходимости в изучение новых незнакомых интерфейсов). Помогает обеспечить слабую связь между компонентами архитектуры(см. [MVP](https://ru.wikipedia.org/wiki/Model-View-Presenter))
 
 **Moxy** - is a library that allows for hassle-free implementation of the MVP pattern in an Android Application. Without troubles of lifecycle and boilerplate code! [Сслыка на GitHub](https://github.com/Arello-Mobile/Moxy) Описание архитектурного паттерна [MVP](https://ru.wikipedia.org/wiki/Model-View-Presenter)
 
