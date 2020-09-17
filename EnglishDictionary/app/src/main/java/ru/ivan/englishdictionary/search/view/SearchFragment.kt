@@ -15,8 +15,8 @@ import ru.ivan.englishdictionary.EnglishDictionaryApplication
 import ru.ivan.englishdictionary.R
 import ru.ivan.englishdictionary.detail.view.DetailFragment
 import ru.ivan.englishdictionary.detail.view.NavigateListener
-import ru.ivan.englishdictionary.di.modules.qualifier.IO
-import ru.ivan.englishdictionary.di.modules.qualifier.UI
+import ru.ivan.englishdictionary.di.modules.IO
+import ru.ivan.englishdictionary.di.modules.UI
 import ru.ivan.englishdictionary.search.presenter.SearchPresenter
 import ru.ivan.englishdictionary.search.presenter.models.SearchItem
 import java.util.concurrent.TimeUnit

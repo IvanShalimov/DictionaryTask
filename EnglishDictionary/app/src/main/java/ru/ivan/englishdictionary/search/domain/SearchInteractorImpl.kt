@@ -2,7 +2,7 @@ package ru.ivan.englishdictionary.search.domain
 
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
-import ru.ivan.englishdictionary.di.modules.qualifier.IO
+import ru.ivan.englishdictionary.di.modules.IO
 import ru.ivan.englishdictionary.search.domain.repository.SearchRepository
 import ru.ivan.englishdictionary.search.presenter.SearchScreenMapper
 import ru.ivan.englishdictionary.search.presenter.models.SearchItem

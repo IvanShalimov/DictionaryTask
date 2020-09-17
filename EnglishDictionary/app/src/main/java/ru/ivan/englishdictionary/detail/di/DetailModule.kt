@@ -9,8 +9,8 @@ import ru.ivan.englishdictionary.detail.domain.repository.DetailRepository
 import ru.ivan.englishdictionary.detail.domain.repository.DetailRepositoryImpl
 import ru.ivan.englishdictionary.detail.presenter.DetailMapper
 import ru.ivan.englishdictionary.detail.presenter.DetailPresenter
-import ru.ivan.englishdictionary.di.modules.qualifier.IO
-import ru.ivan.englishdictionary.di.modules.qualifier.UI
+import ru.ivan.englishdictionary.di.modules.IO
+import ru.ivan.englishdictionary.di.modules.UI
 import ru.ivan.englishdictionary.utils.network.NetworkUtil
 
 @Module

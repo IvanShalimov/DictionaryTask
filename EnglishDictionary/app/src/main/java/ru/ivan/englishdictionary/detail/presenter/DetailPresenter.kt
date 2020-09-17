@@ -6,7 +6,7 @@ import moxy.InjectViewState
 import moxy.MvpPresenter
 import ru.ivan.englishdictionary.detail.domain.DetailInteractor
 import ru.ivan.englishdictionary.detail.view.DetailView
-import ru.ivan.englishdictionary.di.modules.qualifier.UI
+import ru.ivan.englishdictionary.di.modules.UI
 
 @InjectViewState
 class DetailPresenter(
